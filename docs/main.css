@@ -1,0 +1,197 @@
+body {
+  position: relative;
+  z-index: 0;
+  margin: 0;
+  padding: 0;
+  font-family: "맑은 고딕", sans-serif;
+}
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: url("background.png") center/cover no-repeat;
+  filter: blur(8px);
+  z-index: -1;
+}
+
+/* 공통 컨테이너 중앙 정렬 */
+#mainPage,
+#subjectPage,
+#clubIntroPage,
+#surveyPage,
+#resultPage {
+  display: flex;            /* JS에서 flex 로 띄워야 활성화 */
+  flex-direction: column;
+  justify-content: center;  /* 수직 중앙 */
+  align-items: center;      /* 수평 중앙 */
+  text-align: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* 제목 뒤 배경 블러 + 반투명 */
+h1, h2 {
+  position: relative;
+  display: inline-block;
+  padding: 0 12px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 6px;
+  backdrop-filter: blur(4px);
+  margin: 40px 0;
+  z-index: 1;
+}
+
+/* 설문조사 시작 버튼 */
+.start-button {
+  margin-top: 20px;
+  padding: 16px 32px;
+  font-size: 20px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.start-button:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* 기타 버튼 */
+button[type="submit"],
+button[type="button"],
+.subject-grid button,
+.clubButton {
+  margin-top: 20px;
+  padding: 16px 32px;
+  font-size: 20px;
+  border-radius: 10px;
+  background: rgba(33, 150, 243, 0.7);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+button[type="submit"]:hover,
+button[type="button"]:hover,
+.subject-grid button:hover,
+.clubButton:hover {
+  background: rgba(33, 150, 243, 0.9);
+}
+
+/* 과목 그리드 */
+.subject-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 600px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* 동아리 버튼 리스트 */
+#clubList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+.clubButton {
+  width: 200px;
+  font-size: 20px;
+}
+
+/* 뒤로가기 버튼 */
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 24px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 4px;
+  padding: 4px 8px;
+  color: #333;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(0,0,0,0.2);
+  z-index: 5;
+}
+
+/* 동아리 소개 카드 */
+.club-card {
+  background-color: #ffffff;
+  border: 2px solid #cccccc;
+  border-radius: 12px;
+  max-width: 700px;
+  width: 90%;
+  padding: 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  line-height: 1.6;
+  font-size: 17px;
+}
+.club-card h2 {
+  margin-top: 0;
+  font-weight: bold;
+}
+
+/* 설문 페이지 스타일 */
+#surveyPage {
+  background-color: #f3f8fd;
+  border-radius: 20px;
+  width: 70%;
+  max-width: 800px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+
+  /* 여기에 중앙 정렬 속성 추가 */
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+#surveyPage form {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.question {
+  margin-bottom: 30px;
+  font-size: 18px;
+  text-align: left;
+  width: 100%;
+}
+.question label {
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+/* 결과 박스 */
+#resultContent {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-width: 600px;
+  width: 100%;
+}
+#resultContent p {
+  font-size: 18px;
+  margin: 16px 0;
+}
+#result1st {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+/* 반응형 */
+@media (max-width: 600px) {
+  .subject-grid {
+    grid-template-columns: 1fr;
+  }
+  #surveyPage,
+  #resultContent {
+    width: 90%;
+  }
+}
