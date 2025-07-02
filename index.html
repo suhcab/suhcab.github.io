@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <style>body { outline: 10px solid hotpink !important; }</style>
+  <meta charset="UTF-8">
+  <title>동아리 추천 프로그램</title>
+  <link rel="stylesheet" href="main.css?v=2">
+</head>
+<body>
+  <div id="mainPage">
+    <h1>동아리 추천 프로그램</h1>
+    <button class="start-button" onclick="startSurvey()">설문조사 시작</button>
+    <div class="subject-grid">
+      <button onclick="showSubjects('math')">수학</button>
+      <button onclick="showSubjects('physics')">물리</button>
+      <button onclick="showSubjects('chemistry')">화학</button>
+      <button onclick="showSubjects('earth')">지학</button>
+      <button onclick="showSubjects('bio')">생물</button>
+      <button onclick="showSubjects('cs')">정보</button>
+    </div>
+  </div>
+
+  <div id="subjectPage" style="display:none">
+    <button class="back-button" onclick="goBack()">←</button>
+    <h2 id="subject-title"></h2>
+    <div id="clubList"></div>
+  </div>
+
+  <div id="clubIntroPage" style="display:none">
+    <button class="back-button" onclick="goBack()">←</button>
+    <div id="clubIntroBox" class="club-card"></div>
+  </div>
+
+  <div id="surveyPage" style="display:none">
+    <button class="back-button" onclick="goBack()">←</button>
+    <form id="surveyForm" name="surveyForm" onsubmit="event.preventDefault(); showResult();">
+      <button type="button" onclick="resetSurvey()">초기화</button>
+      <div class="question">
+        <p><strong>1. 가장 흥미를 느끼는 과목은 무엇인가요?<strong></p>
+        <label><input type="radio" name="subject" value="모름"> 모름</label>
+        <label><input type="radio" name="subject" value="수학"> 수학</label>
+        <label><input type="radio" name="subject" value="물리"> 물리</label>
+        <label><input type="radio" name="subject" value="화학"> 화학</label>
+        <label><input type="radio" name="subject" value="지구과학"> 지구과학</label>
+        <label><input type="radio" name="subject" value="생물"> 생물</label>
+        <label><input type="radio" name="subject" value="정보"> 정보</label>
+      </div>
+
+      <div class="question">
+        <p><strong>2. 동아리에서 어떤 활동들을 진행하고 싶나요? (두 개 선택)<strong></p>
+        <label><input type="checkbox" name="activities" value="교류전"> 교류전</label>
+        <label><input type="checkbox" name="activities" value="논문세미나"> 논문세미나</label>
+        <label><input type="checkbox" name="activities" value="학회 발표"> 학회 발표</label>
+        <label><input type="checkbox" name="activities" value="대회 참가"> 대회 참가</label>
+        <label><input type="checkbox" name="activities" value="실험"> 실험</label>
+        <label><input type="checkbox" name="activities" value="기기관리"> 기기관리</label>
+        <label><input type="checkbox" name="activities" value="논문게재"> 논문게재</label>
+        <label><input type="checkbox" name="activities" value="학술적 탐구"> 학술적 탐구</label>
+      </div>
+
+      <div class="question">
+        <p><strong>3. 선배 인원 수는 어느 정도가 적당하다고 생각하나요?<strong></p>
+        <label><input type="radio" name="senior" value="많음"> 많음</label>
+        <label><input type="radio" name="senior" value="중간"> 중간</label>
+        <label><input type="radio" name="senior" value="적음"> 적음</label>
+      </div>
+
+      <div class="question">
+        <p><strong>4. 회식은 어느 빈도로 진행되는 것이 좋다고 생각하나요?<strong></p>
+        <label><input type="radio" name="dining" value="많이"> 많이</label>
+        <label><input type="radio" name="dining" value="적당"> 적당</label>
+        <label><input type="radio" name="dining" value="적게"> 적게</label>
+      </div>
+
+      <div class="question">
+        <p><strong>5. 입부 난이도는 어느 정도가 적절하다고 생각하나요?<strong></p>
+        <label><input type="radio" name="difficulty" value="어려움"> 어려움</label>
+        <label><input type="radio" name="difficulty" value="적절"> 적절</label>
+        <label><input type="radio" name="difficulty" value="쉬움"> 쉬움</label>
+      </div>
+
+      <button type="submit">결과 보기</button>
+    </form>
+  </div>
+
+  <div id="resultPage" style="display:none">
+    <button class="back-button" onclick="goBack()">←</button>
+    <div id="resultContent">
+      <h2>추천 동아리 결과</h2>
+      <p id="result1st"></p>
+      <p id="result2nd"></p>
+      <p id="result3rd"></p>
+    </div>
+  </div>
+
+  <script src="main.js?v=2" defer></script>
+</body>
+</html>
